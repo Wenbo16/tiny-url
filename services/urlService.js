@@ -2,6 +2,9 @@ var longToShortHash = {};
 var shortToLongHash = {};
 
 var getShortUrl = function(longUrl) {
+    if(longUrl.indexOf('http') === -1) {
+        longUrl = "http://" + longUrl;
+    }
     if(longToShortHash[longUrl]){
         return longToShortHash[longUrl];
     } else {
@@ -16,6 +19,11 @@ var generateShortUrl = function() {
     return Object.keys(longToShortHash).length;
 }
 
+var getLongUrl = function(shortUrl) {
+    return shortToLongHash[shortUrl];
+};
+
 module.exports = {
-    getShortUrl
+    getShortUrl,
+    getLongUrl
 } 
