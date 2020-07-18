@@ -13,4 +13,15 @@ router.post('/urls', jsonParser, function(req, res) {
     })
 })
 
+
+// Api for a page shows short url and long url pairs
+router.get("/url/:shortUrl", function(req, res) {
+    var shortUrl = req.params.shortUrl;
+    var longUrl = urlService.getLongUrl(shortUrl);
+    res.json({
+        shortUrl,
+        longUrl,
+    })
+})
+
 module.exports = router;
